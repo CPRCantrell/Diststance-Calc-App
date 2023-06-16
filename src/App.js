@@ -46,37 +46,61 @@ function App() {
 
   return (
     <>
-      <div>
+      <main>
 
-        <div>
-        <h2 className="txt-s txt-bold color-gray mb3">Address</h2>
-        <SearchBox accessToken={token} onRetrieve={handleRetrieve} value={searchValue} onChange={value=>setSearchValue(value)} />
+        <div className={"content-background grid"}>
+
+          <div>
+            <h2>Address</h2>
+            <SearchBox accessToken={token} onRetrieve={handleRetrieve} value={searchValue} onChange={value=>setSearchValue(value)} />
+          </div>
+
+          <div className="map">
+            <AddressMinimap satelliteToggle={true} feature={feature} show={true}/>
+          </div>
+
+          <div className={"horizontal-center"}>
+            <p className={"text-center"}>Longitude: {feature.geometry.coordinates[0]}</p>
+            <p className={"text-center"}>Latitude: {feature.geometry.coordinates[1]}</p>
+          </div>
+
+          <div className={"horizontal-center"}>
+            <button className={"point-btns"} onClick={event=>setPointAValue(feature.geometry.coordinates.join(', '))}>SET POINT A</button>
+            <button className={"point-btns"} onClick={event=>setPointBValue(feature.geometry.coordinates.join(', '))}>SET POINT B</button>
+          </div>
+
         </div>
 
-        <div className="test">
-          <AddressMinimap satelliteToggle={true} feature={feature} show={true}/>
+        <div className="calc-content">
+
+          <form onSubmit={event=>handleSubmit(event)} className={"content-background grid"}>
+
+            <div>
+              <h2>Point A</h2>
+              <input type="text" value={pointAValue} onChange={event=>setPointAValue(event.target.value)}/>
+            </div>
+
+            <div>
+              <h2>Point B</h2>
+              <input type="text" value={pointBValue} onChange={event=>setPointBValue(event.target.value)} />
+            </div>
+
+            <input type="submit" />
+
+          </form>
+
+          <div className={"content-background grid"}>
+            <h2>Distance:</h2>
+            <p>{distance} km</p>
+          </div>
+
         </div>
 
-        <button onClick={event=>setPointAValue(`${feature.geometry.coordinates[0]}, ${feature.geometry.coordinates[1]}`)}>SET POINT A</button>
-        <button onClick={event=>setPointBValue(`${feature.geometry.coordinates[0]}, ${feature.geometry.coordinates[1]}`)}>SET POINT B</button>
+      </main>
 
-        <p>Longitude: {feature.geometry.coordinates[0]}</p>
-        <p>Latitude: {feature.geometry.coordinates[1]}</p>
-      </div>
+      <footer>
 
-      <form onSubmit={event=>handleSubmit(event)}>
-        <h2>Point A</h2>
-        <input type="text" value={pointAValue} onChange={setPointAValue}/>
-
-        <h2>point B</h2>
-        <input type="text" value={pointBValue} onChange={setPointBValue} />
-
-        <input type="submit" />
-      </form>
-
-      <div>
-        <h2>Distance: {distance}km</h2>
-      </div>
+      </footer>
     </>
   );
 }
