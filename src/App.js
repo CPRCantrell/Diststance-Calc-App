@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { SearchBox, AddressMinimap, config } from "@mapbox/search-js-react";
+import GitHubIcon from "./assets/github-icon.png"
+import LinkedInIcon from "./assets/linkedin-icon.png"
 import "./App.scss"
 
 function App() {
@@ -99,6 +101,13 @@ function App() {
       </main>
 
       <footer>
+
+        <div className="link-area">
+          <a href="https://github.com/CPRCantrell" target="_blank" rel="noreferrer"><img className="icon" src={GitHubIcon} alt="GitHub Link"/></a>
+          <a href="https://www.linkedin.com/in/chris-romancantrell/" target="_blank" rel="noreferrer"><img className="icon" src={LinkedInIcon} alt="LinkedIn Link"/></a>
+        </div>
+
+        <h1>Distance Calculator</h1>
 
       </footer>
     </>

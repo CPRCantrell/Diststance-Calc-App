@@ -19,11 +19,20 @@ main{
 footer{
     background-color: rgb(108, 117, 255);
     width: 100%;
-    height: var(--footer-width);
+    min-height: var(--footer-width);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    padding-inline: 10px;
 }
 
 h1, h2, p{
     color: white;
+}
+
+h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 input{
@@ -79,6 +88,16 @@ input[type=text]{
 .map{
     width: max(100px, 50vw);
     height: clamp(100px, 40vh, 2000px);
+}
+
+.link-area{
+    display: flex;
+    align-items: center;
+}
+
+.icon{
+    width: 50px;
+    height: 50px;
 }
 
 @media (width < 875px) {
