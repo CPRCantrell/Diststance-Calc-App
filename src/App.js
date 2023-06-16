@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback, useDeferredValue } from "react";
-import { SearchBox, AddressMinimap, useConfirmAddress, config } from "@mapbox/search-js-react";
+import React, { useState, useEffect, useCallback } from "react";
+import { SearchBox, AddressMinimap, config } from "@mapbox/search-js-react";
 import "./App.scss"
 
 function App() {
